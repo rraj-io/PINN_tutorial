@@ -64,8 +64,8 @@ Subscribe on [Substack](https://rajrohit403.substack.com/) to catch it the day i
 Everything runs with four packages. **No GPU needed** — every notebook trains in minutes on a laptop CPU (T3's full two-phase run is the slowest at ~5 minutes).
 
 ```bash
-git clone https://github.com/rraj-io/pinn-tutorial.git
-cd pinn-tutorial
+git clone https://github.com/rraj-io/pinn_tutorial.git
+cd pinn_tutorial
 
 python3 -m venv pinn-env
 source pinn-env/bin/activate   # Windows: pinn-env\Scripts\activate

@@ -1,3 +1,8 @@
+# Ignore all generated and saved images
+*.jpg 
+*.jpeg 
+*.png
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
