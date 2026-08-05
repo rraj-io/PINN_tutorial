@@ -16,6 +16,7 @@ No mesh, no labelled simulation data — derivatives come exactly from automatic
 
 ## The tutorials
 
+
 Work through them in order — each one adds exactly one layer of difficulty on top of the last, and the code structure barely changes between them.
 
 | # | Notebook | Problem | What's new |
