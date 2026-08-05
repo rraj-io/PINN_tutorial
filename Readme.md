@@ -26,7 +26,7 @@ Work through them in order — each one adds exactly one layer of difficulty on 
 | T2 | `PINN_Tutorial_02_1D_Linear_ODE.ipynb` | 1D Poisson: $-u'' = \sin(\pi x)$, $u(0)=u(1)=0$ | Second derivatives (chained `autograd.grad`), two boundary conditions, `create_graph` vs `retain_graph`, collocation-count study |
 | T3 | `PINN_Tutorial_03_1D_Burgers.ipynb` | Steady Burgers: $u\,u_x - \nu u_{xx} = 0$, $u(\pm 1) = \pm 1$ | First **nonlinear** residual, SciPy `solve_bvp` reference (no closed form), Xavier init, two-phase **Adam → L-BFGS** training, viscosity study |
 | T4 | `PINN_Tutorial_04_2D_Poisson.ipynb` | 2D Poisson: $-\nabla^2 u = f$ on the unit square | Two spatial inputs, `meshgrid` collocation, four boundary edges, 2D error heatmaps |
-| T5 | *(planned)* | 2D Navier–Stokes (lid-driven cavity) | Vector-valued output, pressure coupling, incompressibility constraint |
+| T5 | `PINN_Tutorial_05_2D_NavierStocks_Cavity.ipynb` | 2D Navier–Stokes (lid-driven cavity) | Vector-valued output, pressure coupling, incompressibility constraint |
 
 ## How to follow the tutorials
 
@@ -42,23 +42,6 @@ The workflow that works best:
 - If your run doesn't converge, compare against the committed notebook: it's a known-working version with matching seeds (`torch.manual_seed(42)`), so differences point at what changed.
 
 Every tutorial follows the same six-step recipe: **write the PDE → sample collocation points → build a network → define the loss → minimize → validate.** T0 introduces the recipe; T1–T4 apply it to progressively harder problems.
-
-## Coming next: T5 — 2D Navier–Stokes (lid-driven cavity)
-
-The series capstone solves the steady incompressible Navier–Stokes equations in the **lid-driven cavity** — the standard benchmark of CFD: a square box of fluid, three stationary walls, and a top lid sliding at constant velocity, driving a recirculating vortex.
-
-$$(\mathbf{u} \cdot \nabla)\mathbf{u} = -\nabla p + \frac{1}{Re}\nabla^2 \mathbf{u}, \qquad \nabla \cdot \mathbf{u} = 0$$
-
-Everything the earlier tutorials built shows up at once, plus the genuinely new challenges of a real flow problem:
-
-- **Vector-valued output**: the network predicts three fields — $u(x,y)$, $v(x,y)$, $p(x,y)$ — instead of a single scalar
-- **Coupled equations**: two momentum residuals plus the continuity equation, all enforced simultaneously in one loss
-- **Incompressibility as a constraint**: $\nabla \cdot \mathbf{u} = 0$ becomes its own loss term (and where the divergence residual refuses to vanish is a diagnostic in itself)
-- **Pressure without pressure BCs**: pressure appears only through its gradient, so it's determined up to a constant — and handling that is half the battle
-- **The Burgers convection term, now for real**: $(\mathbf{u}\cdot\nabla)\mathbf{u}$ is the 2D version of the $u\,u_x$ nonlinearity from T3, and the Reynolds number plays exactly the role the viscosity study previewed
-- **Validation against classical CFD**: the benchmark reference for cavity flow (Ghia et al. centerline velocity profiles), the same way T3 validated against `solve_bvp`
-
-Subscribe on [Substack](https://rajrohit403.substack.com/) to catch it the day it lands.
 
 ## Setup
 
@@ -108,6 +91,7 @@ The series is also available as a single self-contained PDF — ***Physics-Infor
 - **Subscribe** on Substack to catch new tutorials the day they land: [rajrohit403.substack.com](https://rajrohit403.substack.com/)
 - **Buy the ebook** on Gumroad to support the notebooks and the writing that goes with them: [rajrohit403.gumroad.com/l/pinn_tutorial](https://rajrohit403.gumroad.com/l/pinn_tutorial)
 - **Open an issue** if a notebook doesn't run for you — include your package versions and the first cell that misbehaves.
+- Support my work on [Buymeacoffee](https://buymeacoffee.com/halfqubix)
 
 ---
 
