@@ -77,12 +77,14 @@ Each notebook ends with validation against a reference solution and reports L2 /
 | T1 — first-order ODE | Analytical $\sin(\pi x)/\pi$ | ~2.5e-03 |
 | T2 — 1D Poisson | Analytical $\sin(\pi x)/\pi^2$ | ~7.3e-05 |
 | T3 — steady Burgers ($\nu=0.1$) | SciPy `solve_bvp` | ~1.9e-04 |
+| T4 - 2D Poisson's problem | Analytical Solution |  ~....pass |
+| T5 - 2D Lid-driven Cavity | Reference banchmark | ~...pass |
 
 Your numbers won't match to the last digit across PyTorch versions and platforms, but they should land in the same order of magnitude. If they're wildly off, the failure-mode tables in each tutorial are the place to start.
 
 ## Ebook
 
-The series is also available as a single self-contained PDF — ***Physics-Informed Neural Networks, from Ground Zero*** (T0–T3, ~51 pages), with every script reproduced in full, in run order, plus the derivations and design decisions behind each one.
+The series is also available as a single self-contained PDF — ***Physics-Informed Neural Networks, from Ground Zero*** (T0–T5, 112 pages), with every script reproduced in full, in run order, plus the derivations and design decisions behind each one.
 
 **Get it on Gumroad:** [rajrohit403.gumroad.com/l/pinn_tutorial](https://rajrohit403.gumroad.com/l/pinn_tutorial)
 
